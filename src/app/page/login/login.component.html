@@ -1,0 +1,28 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="login-container">
+    <div class="frame-header" fxLayoutAlign="center center">
+      <label *ngIf="organization">{{ organization.name }}- </label>
+      <label>User Login</label>
+    </div>
+    <form [formGroup] = loginForm class="frame-content" fxLayout="column" fxLayoutAlign="center stretch">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">User Name</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput focusid="login" tabindex="1" appAutoFocus formControlName="username">
+      </div>
+      <div  fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">Password</label>
+        <span fxFlex="3">:</span>
+        <input type="password" fxFlex="67" appNavigationInput focusid="login" tabindex="2" formControlName="password" (keyup.Enter)="login()">
+      </div>
+    </form>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="login()">
+        <label><u>A</u>ccept</label>
+      </div>
+      <div>
+        <label><u>C</u>ancel</label>
+      </div>
+    </div>
+  </div>
+</div>

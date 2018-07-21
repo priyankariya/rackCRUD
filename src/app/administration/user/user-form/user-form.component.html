@@ -1,0 +1,64 @@
+<form class="frame-content" fxLayout="column" [formGroup]="userForm" novalidate>
+  <input type="hidden" formControlName="id">
+  <div class="user-general-info-container">
+    <div class="user-container-title">
+      <label>General Info : </label>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <label for="username" fxFlex="40">Username</label>
+      <label fxFlex="4">:</label>
+      <input fxFlex="56" type="text" id="username" appAutoFocus tabindex="1" appNavigationInput focusid="user" formControlName="username">
+    </div>
+    <div fxLayout="row" appInvalidMessage="username">
+      <div class="err-message" fxFlexOffset="44" fxLayout="column">
+        <span *appInvalidType="'required'">Username is required..!!</span>
+        <span *appInvalidType="'pattern'">Username must be alphanumeric only..!!</span>
+        <span *appInvalidType="'maxlength'">Username cannot have more than 70 chars..!!</span>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngIf="!user">
+      <label for="password" fxFlex="40">Password</label>
+      <label fxFlex="4">:</label>
+      <input fxFlex="56" type="password" id="password"  formControlName="password" tabindex="2" appNavigationInput focusid="user">
+    </div>
+    <div fxLayout="row" appInvalidMessage="password" *ngIf="!user">
+      <div class="err-message" fxFlexOffset="44" fxLayout="column">
+        <span *appInvalidType="'required'">Password is required..!!</span>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <label fxFlex="40">Is_Cashier</label>
+      <label fxFlex="4">:</label>
+      <input type="checkbox" tabindex="3" formControlName="isCashier" appNavigationInput focusid="user">
+    </div>
+  </div>
+  <div fxLayout="column" class="user-privilege-info-container">
+    <div class="user-container-title">
+      <label>Privilegess : </label>
+    </div>
+    <div fxLayout="row" class="user-privilege-header" fxLayoutAlign="start center">
+      <label fxFlex="40">Action</label>
+      <label fxFlex="10"><mat-icon>add_box</mat-icon></label>
+      <label fxFlex="10"><mat-icon>info</mat-icon></label>
+      <label fxFlex="10"><mat-icon>edit</mat-icon></label>
+      <label fxFlex="10"><mat-icon>delete</mat-icon></label>
+      <label fxFlex="10">F.D</label>
+      <label fxFlex="10">T.D</label>
+    </div>
+    <div fxLayout="column" class="user-privilege-content">
+      <table fxLayout="column">
+        <tr fxLayout="row" *ngFor="let privilege of privileges; let i = index">
+          <td fxFlex="40">{{ privilege[0].menu }}</td>
+          <td fxFlex="10" *ngFor="let item of privilege">
+            <input *ngIf="item.method === 'create'" type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.value" [tabindex]="((i * 6) + 1) + 3" appNavigationInput focusid="user">
+            <input *ngIf="item.method === 'detail'" type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.value" [tabindex]="((i * 6) + 1) + 4" appNavigationInput focusid="user">
+            <input *ngIf="item.method === 'update'" type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.value" [tabindex]="((i * 6) + 1) + 5" appNavigationInput focusid="user">
+            <input *ngIf="item.method === 'delete'" type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.value" [tabindex]="((i * 6) + 1) + 6" appNavigationInput focusid="user">
+            <input *ngIf="item.method === 'fd' && item.days_limit" type="text" style="width: calc(100% - 10px)" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.value" [tabindex]="((i * 6) + 1) + 7" appNavigationInput focusid="user">
+            <input *ngIf="item.method === 'td' && item.days_limit" type="text" style="width: calc(100% - 10px)" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.value" [tabindex]="((i * 6) + 1) + 8" appNavigationInput focusid="user">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>

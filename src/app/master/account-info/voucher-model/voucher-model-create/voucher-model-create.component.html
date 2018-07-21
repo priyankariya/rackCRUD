@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="voucher-model-create-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="start center">
+      <label>New Voucher Model</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-voucher-model-form #voucherTypeForm (voucherTypeSubmit)="onSubmitVoucherModel($event)"></app-voucher-model-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center">
+      <div (click)="saveVoucherModel()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

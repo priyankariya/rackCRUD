@@ -1,0 +1,5 @@
+<div class="sidebar-menu-container" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px" (click)="selectItem()" [style.color]="disabled ? 'darkgray' : null">
+  <label class="sidebar-menu-item">{{ item }}</label>
+  <span *ngIf="shortcut"> - </span>
+  <label class="sidebar-menu-shortcut">{{ shortcut }}</label>
+</div>

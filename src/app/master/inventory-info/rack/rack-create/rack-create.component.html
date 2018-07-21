@@ -1,0 +1,18 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div class="rack-create-container" fxLayout="column">
+    <div class="frame-header" fxLayoutAlign="start center">
+      <label>New Rack </label>
+    </div>
+    <div class="frame-content">
+      <app-rack-form #rackForm (rackSubmit)="onSubmitRack($event)"></app-rack-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveRack()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+$auto-complete-dialog-title-height: 25px;
+$auto-complete-dialog-content-padding: 10px;
+
+
+.auto-complete-dialog-wrapper {
+  height: 100%;
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+
+  & > .auto-complete-dialog-title {
+    height: $auto-complete-dialog-title-height;
+    background-color: rosybrown;
+    font-family: Monaco, "Lucida Console", monospace;
+  }
+
+  & > .auto-complete-dialog-content {
+    padding: 5px;
+    height: calc(100% - #{$auto-complete-dialog-title-height + $auto-complete-dialog-content-padding});
+  }
+}

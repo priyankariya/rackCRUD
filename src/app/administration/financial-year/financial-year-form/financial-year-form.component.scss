@@ -1,0 +1,8 @@
+.fy-container-sub-tittle {
+  color:  #7D6660;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  & > label {
+    border-bottom: 1px solid gray;
+  }
+}

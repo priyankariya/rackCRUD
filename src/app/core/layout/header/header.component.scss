@@ -1,0 +1,11 @@
+.header-container {
+  height: 100%;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.title-frame {
+  & > h2 {
+    letter-spacing: 3px;
+  }
+}

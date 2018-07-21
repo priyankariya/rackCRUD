@@ -1,0 +1,93 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="rack-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Racks</label>
+    </div>
+    <!--<div class="frame-content" fxLayout="column">
+      <app-auto-complete #autoComplete [limitSize]="17" [reload]="reloadList" [fields]="autoCompleteFields" [searchField]="'name'" [dataStream]="rackDataStreamCallback" (selectedItem)="onAutoCompleteSelect($event)"></app-auto-complete>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="addRack()">
+        <label *ngIf="userPermissions([13])"><u>N</u>ew</label>
+      </div>
+      <div (click)="editRack()">
+        <label *ngIf="userPermissions([15])"><u>E</u>dit</label>
+      </div>
+      <div (click)="deleteRack()">
+        <label *ngIf="userPermissions([16])"><u>D</u>elete</label>
+      </div>
+    </div>-->
+
+  <h1>Product List</h1>
+    <table class ="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let rack of racks">
+      <td>{{rack.id}}</td>
+      <td>{{rack.name}}</td>
+      <td>{{rack.description}}</td>
+      <td>{{rack.price}}</td>
+
+      <td>
+      <button class="btn btn-info"
+        (click) = "showEditRackForm(rack)">
+        <i class="fa fa-edit"></i>
+      </button>
+      <button class="btn btn-danger"
+      (click) = "removeRack(rack)">
+        <i class="fa fa-minus"></i>
+      </button>
+      </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-success"
+    (click)="showAddRackForm()"><i class="fa fa-plus"></i></button>
+    <br/>
+    <br/>
+
+    <div *ngIf="rackForm">
+      <h2>Add New Product</h2>
+      <p>ID:<input type="text" name="id"
+                      [(ngModel)]="newRack.id"/> </p>
+      <p>Name:<input type="text" name="name"
+                     [(ngModel)]="newRack.name"/></p>
+      <p>Description:<input type="text" name="description"
+                            [(ngModel)]="newRack.description"/></p>
+      <p>Price:<input type="text" name="price"
+                      [(ngModel)]="newRack.price"/></p>
+      <p>
+        <button type="button" class="btn btn-primary"
+        (click)="saveRack(newRack)">Submit</button>
+        <button type="button" class="btn btn-warning">Cancel</button>
+      </p>
+   </div>
+
+    <div *ngIf="editRackForm">
+      <h2>Edit Product Details</h2>
+      <p>ID:<input type="text" name="id"
+                   [(ngModel)]="editedRack.id"/> </p>
+      <p>Name:<input type="text" name="name"
+                     [(ngModel)]="editedRack.name"/></p>
+      <p>Description:<input type="text" name="description"
+                            [(ngModel)]="editedRack.description"/></p>
+      <p>Price:<input type="text" name="price"
+                      [(ngModel)]="editedRack.price"/></p>
+      <p>
+        <button type="button" class="btn btn-primary"
+                (click)="updatedRack(editedRack)">Submit</button>
+        <button type="button" class="btn btn-warning"
+              (click)="cancelEdits()">Cancel</button>
+      </p>
+    </div>
+</div>
+</div>

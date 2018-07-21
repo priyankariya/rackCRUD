@@ -1,0 +1,39 @@
+.gateway-wrapper {
+  height: 100%;
+  font-family: Monaco, "Lucida Console", monospace;
+
+  & > .gateway-container {
+    height: 500px;
+    width: 400px;
+    background-color: lightgoldenrodyellow;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    & > .gateway-header {
+      height: 40px;
+      background-color:#2B303B;
+      color: white;
+    }
+
+    & > .gateway-content {
+      padding: 5px 20px 5px 20px;
+
+      & > div {
+        margin-bottom: 10px;
+
+        & > b {
+          margin-bottom: 5px;
+        }
+
+        & > a > button {
+          border: none;
+          background: none;
+          margin-left: 20px;
+          font-size: 16px;
+          font-family: inherit;
+        }
+      }
+    }
+
+  }
+}
+

@@ -1,0 +1,8 @@
+<div fxLayout="column" class="auto-complete-dialog-wrapper">
+  <div fxLayout="row" class="auto-complete-dialog-title" fxLayoutAlign="center center">
+    <label>{{ title }}</label>
+  </div>
+  <div class="auto-complete-dialog-content">
+    <app-auto-complete [limitSize]="limitSize" [fields]="autoCompleteFields" [searchField]="searchField" [dataStream]="dataStream" [multiSelect]="multiSelect" (selectedItem)="onAutoCompleteSelect($event)" (selectedItems)="onAutoCompleteMultiSelect($event)"></app-auto-complete>
+  </div>
+</div>

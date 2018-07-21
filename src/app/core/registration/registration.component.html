@@ -1,0 +1,20 @@
+<form [formGroup]="registrationForm" fxLayout="column" fxLayoutAlign="center center" fxFill style="background-color: #FDEAD7">
+  <div class="registration-component-container" fxLayout="column">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="start center">
+      <label>Client Registration</label>
+    </div>
+    <div class="frame-content">
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="37">Display Name</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="60" appNavigationInput focusid="registration" formControlName="displayName" tabindex="1" appAutoFocus>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="37">Activation Key</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="60" appNavigationInput focusid="registration" formControlName="activationKey" tabindex="2" (keyup.Enter)="registerClient()">
+      </div>
+    </div>
+    <div class="frame-footer"></div>
+  </div>
+</form>

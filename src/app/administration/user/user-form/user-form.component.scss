@@ -1,0 +1,32 @@
+.user-general-info-container {
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+
+.user-privilege-info-container {
+  height: 100%;
+}
+
+.user-container-title {
+  color: #7D6660;
+  margin-bottom: 10px;
+
+  & > label {
+    border-bottom: 1px solid gray;
+  }
+}
+
+.user-privilege-header {
+  border-bottom: 1px dotted gray
+}
+
+.user-privilege-content {
+  height: 100%;
+  margin-top: 10px;
+  overflow: auto
+}
+
+table {
+  height: 100%;
+  width: 100%;
+}

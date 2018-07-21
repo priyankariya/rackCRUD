@@ -1,0 +1,11 @@
+.sidebar-wrapper {
+  width: 100%;
+  height: 98%;
+  background-color: #455451;
+
+  & > .sidebar-title {
+    border-bottom: 1px solid bisque;
+    color: chartreuse;
+    height: 30px;
+  }
+}

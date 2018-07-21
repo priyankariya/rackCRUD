@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="product-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Product</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-auto-complete #autoComplete [limitSize]="17" [reload]="reloadList" [fields]="autoCompleteFields" [searchField]="'name'" [dataStream]="productDataStreamCallback" (selectedItem)="onAutoCompleteSelect($event)"></app-auto-complete>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="addProduct()">
+        <label *ngIf="userPermissions([41])"><u>N</u>ew</label>
+      </div>
+      <div (click)="editProduct()">
+        <label *ngIf="userPermissions([43])"><u>E</u>dit</label>
+      </div>
+      <div (click)="deleteProduct()">
+        <label *ngIf="userPermissions([44])"><u>D</u>elete</label>
+      </div>
+    </div>
+  </div>
+</div>

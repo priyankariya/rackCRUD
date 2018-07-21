@@ -1,0 +1,9 @@
+<div fxLayout="row" class="header-container" fxLayoutAlign="start center">
+  <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center" class="title-frame">
+    <h2>Overseer</h2>
+  </div>
+  <span fxFlex="60"></span>
+  <div fxFlex="20" fxLayout="row" fxLayoutAlign="end center">
+    {{ ((loggedInUser) ? loggedInUser.username : null) | uppercase }}
+  </div>
+</div>

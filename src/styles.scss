@@ -1,0 +1,163 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@keyframes pageLoad {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.page-load-animation {
+  opacity: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  animation: pageLoad linear 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+  animation-delay: 1.5s;
+  background: #2B303B;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.px-5 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.py-5 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.p-5 {
+  padding: 5px;
+}
+
+.bx-1 {
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+
+.br-1 {
+  border-right: 1px solid;
+}
+
+.bd-1 {
+  border-bottom: 1px solid;
+}
+
+.frame-footer {
+  height: 30px;
+  background-color: #445451;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  & > div {
+    border-right: 1px solid gray;
+
+    & > label {
+      padding-left: 5px;
+      padding-right: 5px;
+      cursor: pointer;
+
+      & > u {
+        color: lightgreen;
+        border-bottom: 1px solid lightgreen;
+        margin-right: 2px;
+      }
+    }
+  }
+}
+
+.frame-header {
+  font-size: 16px;
+  color: white;
+  background-color: #445451;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.frame-content {
+  height: calc(100% - 60px);
+  padding: 5px;
+  background-color: lightgoldenrodyellow;
+}
+
+.err-message {
+  color: #D8000C;
+  font-family: Monaco, "Lucida Console", monospace;
+  font-size: 13px;
+}
+
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,31 @@
+<div fxLayout="column" class="gateway-wrapper" fxLayoutAlign="center center">
+  <div class="gateway-container" fxLayout="column">
+    <div class="gateway-header" fxLayout="row" fxLayoutAlign="center center">
+      <span>Gateway</span>
+    </div>
+    <div class="gateway-content" fxLayout="column" fxLayoutAlign="center start">
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <b>Administration</b>
+        <a [routerLink]="['/administration/user']"><button appAutoFocus appNavigationButton focusid="gate-way" tabindex="1">User</button></a>
+        <a [routerLink]="['/administration/branch']"><button appNavigationButton focusid="gate-way" tabindex="2">Branch</button></a>
+        <a [routerLink]="['/administration/financial-year']"><button appNavigationButton focusid="gate-way" tabindex="3">Financial Year</button></a>
+        <a [routerLink]="['/administration/voucher-numbering']"><button appNavigationButton focusid="gate-way" tabindex="4">Voucher Numbering</button></a>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <b>Master</b>
+        <a [routerLink]="['/master/account-info']"><button appNavigationButton focusid="gate-way" tabindex="5">Account Info</button></a>
+        <a [routerLink]="['/master/inventory-info']"><button appNavigationButton focusid="gate-way" tabindex="6">Inventory Info</button></a>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <b>Transaction</b>
+        <a [routerLink]="['/transaction/account-voucher']"><button appNavigationButton focusid="gate-way" tabindex="7">Account Voucher</button></a>
+        <a><button appNavigationButton focusid="gate-way" tabindex="8">Inventory Voucher</button></a>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <b>Report</b>
+        <a><button appNavigationButton focusid="gate-way" tabindex="9">Display</button></a>
+        <a><button appNavigationButton focusid="gate-way" tabindex="10">Balance Sheet</button></a>
+      </div>
+    </div>
+  </div>
+</div>

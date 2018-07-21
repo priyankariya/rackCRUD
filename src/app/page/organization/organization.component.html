@@ -1,0 +1,13 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div class="organization-display-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="start center">
+      <label>Organizations</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <div *ngFor="let item of organizations; let i = index">
+        <button class="organization-menu-content" #organizationItems [tabindex]="i + 1" appAutoFocus appNavigationButton focusid="organization" (keyup.Enter)="selectOrganization(item)">{{item.name}}</button>
+      </div>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center"></div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+$account-voucher-element-header-height: 30px;
+$account-voucher-element-footer-height: 10px;
+.account-voucher-element-container {
+  height: 100%;
+  padding: 5px;
+
+  & > .account-voucher-element-header {
+    height: $account-voucher-element-header-height;
+    & > div {
+      border-top: 2px solid gray;
+      border-bottom: 1px solid gray;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+
+  & > .account-voucher-element-content {
+    height: calc(100% - #{($account-voucher-element-header-height - $account-voucher-element-footer-height)});
+  }
+
+  & > .account-voucher-element-footer {
+    height: $account-voucher-element-footer-height;
+  }
+}
+
+.input-fields-border {
+  padding-bottom: 5px;
+  border-bottom: 1px dotted gray
+}
+
+$voucher-header-height: 70px;
+$voucher-footer-height: 60px;
+
+.voucher-container {
+  height: 100%;
+  font-family: Monaco, "Lucida Console", monospace;
+
+  & > .voucher-header {
+    height: $voucher-header-height;
+  }
+
+  & > .voucher-content {
+    height: calc(100% - #{($voucher-header-height + $voucher-footer-height)});
+  }
+
+  & > .voucher-footer {
+    height: $voucher-footer-height;
+  }
+}
+
+.display-details {
+  font-size: 14px;
+}

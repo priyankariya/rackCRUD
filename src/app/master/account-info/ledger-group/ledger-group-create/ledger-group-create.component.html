@@ -1,0 +1,18 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div class="ledger-group-container" fxLayout="column">
+    <div class="frame-header" fxLayoutAlign="start center">
+      <label>Ledger Group</label>
+    </div>
+    <div class="frame-content">
+      <app-ledger-group-form #ledgerGroupForm (ledgerGroupSubmit)="onSubmitLedgerGroup($event)"></app-ledger-group-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveLedgerGroup()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

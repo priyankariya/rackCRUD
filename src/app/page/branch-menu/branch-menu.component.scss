@@ -1,0 +1,55 @@
+.branch-menu-wrapper {
+  height: 100%;
+  font-family: Monaco, "Lucida Console", monospace;
+
+  & > .branch-menu-container {
+    height: 70%;
+    width: 30%;
+    background-color: lightgoldenrodyellow;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+    & > .branch-menu-header {
+      height: 40px;
+      background-color:#2B303B;
+      color: white;
+    }
+
+    & > .branch-menu-content {
+      height: 100%;
+      padding: 5px;
+
+      & > div > a > button {
+        border: none;
+        background: none;
+        margin-left: 20px;
+        font-size: 16px;
+        font-family: inherit;
+      }
+    }
+
+    & > .branch-menu-footer {
+      height: 30px;
+      background-color: #2B303B;
+      color: white;
+      padding-left: 5px;
+      padding-right: 5px;
+
+      & > div {
+        border-right: 1px solid gray;
+
+        & > label {
+          padding-left: 5px;
+          padding-right: 5px;
+          cursor: pointer;
+
+          & > u {
+            color: lightgreen;
+            border-bottom: 1px solid lightgreen;
+            margin-right: 2px;
+          }
+        }
+      }
+    }
+  }
+}

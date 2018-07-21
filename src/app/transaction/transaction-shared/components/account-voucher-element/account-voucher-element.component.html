@@ -1,0 +1,113 @@
+<form [formGroup]="voucherForm" class="voucher-container" fxFill>
+  <div class="voucher-header" fxLayout="column">
+    <div fxLayout="row">
+      <div fxFlex="60">
+        <div fxLayout="row" fxFlex="100">
+          <div fxFlex="30" fxLayout="row" class="p-5" fxLayoutAlign="start center">
+            <label fxFlex="33">Date</label>
+            <span fxFlex="4">:</span>
+            <input type="text" fxFlex="54" [appSetFocus]="dateFocusHandler" appNavigationInput focusid="account-voucher-element" formControlName="transDate" tabindex="1">
+          </div>
+          <div fxLayout="row" fxFlex="40" fxLayoutAlign="start center" class="p-5" *ngIf="getConfiguration('edt').value">
+            <label fxFlex="33">Eff.Date</label>
+            <span fxFlex="4">:</span>
+            <input type="text" fxFlex="54" formControlName="valueDate" appNavigationInput focusid="account-voucher-element" tabindex="2">
+          </div>
+          <div fxLayout="row" fxFlex="30" fxLayoutAlign="start center" class="p-5" *ngIf="getConfiguration('ref').value">
+            <label fxFlex="33">Ref No</label>
+            <span fxFlex="4">:</span>
+            <input type="text" fxFlex="54" formControlName="refNo" [appSetFocus]="referenceFieldFocusHandler" appNavigationInput focusid="account-voucher-element" tabindex="3">
+          </div>
+        </div>
+        <div fxLayout="row" fxFlex="30" fxLayoutAlign="start center" class="p-5" *ngIf="(getConfiguration('sem').value)">
+          <label fxFlex="33">Account</label>
+          <span fxFlex="4">:</span>
+          <input type="text" [appSetFocus]="alternateLedgerFocusHandler" appNavigationInput focusid="account-voucher-element" (keydown)="alternateLedgerListOnKeyDown($event)" [value]="(formattedAlternateLedger()) ? formattedAlternateLedger() : null" tabindex="4">
+        </div>
+      </div>
+      <div fxFlex="40" *ngIf="voucherData" fxLayoutAlign="start center">
+        <span fxFlex></span>
+        <label>No : {{voucherData.voucherNo}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="voucher-content">
+    <div class="account-voucher-element-container" fxLayout="column">
+      <input type="hidden" formControlName="id">
+      <div class="account-voucher-element-header">
+        <div fxLayout="row" fxFlex="100">
+          <label [fxFlex]="(getConfiguration('sem').value) ? 90 : 80">Particular</label>
+          <div fxFlex="20" [style.visibility]="(getConfiguration('sem').value) ? 'hidden' : 'visible'" fxLayout="row">
+            <div fxFlex="50" fxLayoutAlign="end center">
+              <label>Debit</label>
+            </div>
+            <div fxFlex="50" fxLayoutAlign="end center">
+              <label>Credit</label>
+            </div>
+          </div>
+          <div fxFlex="10" fxLayoutAlign="end center" *ngIf="(getConfiguration('sem').value)">
+            <label>Amount</label>
+          </div>
+        </div>
+      </div>
+      <div class="account-voucher-element-content" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start center" class="input-fields-border" (keydown.Enter)="saveTransaction()">
+          <div [fxFlex]="(getConfiguration('sem').value) ? 90 : 80" fxLayout="row" fxLayoutAlign="start center">
+            <input type="text" fxFlex="50" (keydown)="ledgerListOnKeyDown($event)" focusid="account-voucher-element" [value]="(formattedLedger()) ? formattedLedger() : null" [appSetFocus]="ledgerFocusHandler" appNavigationInput tabindex="5">
+
+          </div>
+          <div [fxFlex]="(getConfiguration('sem').value) ? 0 : 20" [style.visibility]="(getConfiguration('sem').value) ? 'hidden' : 'visible'" fxLayout="row">
+            <input type="number" style="text-align: right;" fxFlex="50" formControlName="debit" focusid="account-voucher-element" [appSetFocus]="debitFocusHandler"  appNavigationInput tabindex="6">
+            <input type="number" style="text-align: right;" fxFlex="50" formControlName="credit" focusid="account-voucher-element" [appSetFocus]="creditFocusHandler" appNavigationInput tabindex="7">
+          </div>
+          <input type="number" fxFlex="10"  style="text-align: right;" formControlName="amount" focusid="account-voucher-element" *ngIf="(getConfiguration('sem').value)" appNavigationInput tabindex="8" [appSetFocus]="amountFocusHandler">
+        </div>
+        <div fxLayout="column" *ngIf="transactions">
+          <div fxLayout="column" *ngFor="let item of transactions;let i=index;" class="mb-5 mt-5">
+            <div fxLayout="row" fxFlex="100">
+              <button #transactionList style="text-align: left" appNavigationButton focusid="account-voucher-element-transaction" [tabindex]="i+1" [fxFlex]="(getConfiguration('sem').value) ? 90 : 80" (keydown)="transactionListOnKeyDown($event, item.ledger)">{{item.ledger.name}}</button>
+              <div fxFlex="20" fxLayout="row" [style.visibility]="(getConfiguration('sem').value) ? 'hidden' : 'visible'">
+                <div fxFlex="50" fxLayoutAlign="end center">
+                  <label>{{item.debit | number:'1.2-2'}}</label>
+                </div>
+                <div fxFlex="50" fxLayoutAlign="end center">
+                  <label>{{item.credit | number:'1.2-2'}}</label>
+                </div>
+              </div>
+              <div fxFlex="10" fxLayoutAlign="end center" *ngIf="(getConfiguration('sem').value)">
+                <label>{{item.amount | number:'1.2-2'}}</label>
+              </div>
+            </div>
+            <div *ngIf="getConfiguration('slb').value" fxLayout="row" class="mt-5">
+              <label fxFlex="20" fxFlexOffset="10">CurBal: {{item.ledger.balance + ((item.ledger.balance < 0 )? ' Cr' : ' Dr')}}</label>
+            </div>
+            <div *ngIf="getConfiguration('sbw').value" fxLayout="column" class="mt-5">
+              <div class="display-details" fxLayout="row" fxFlex="20" *ngFor="let item2 of item.bwd || []">
+                <label fxFlex="10"></label>
+                <label fxFlex="10">{{(item2.refNo)}}</label>
+                <label fxFlex="5">:</label>
+                <label fxFlex="10">{{(item2.amount)}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="account-voucher-element-footer" fxLayout="row">
+        <span [fxFlex]="(getConfiguration('sem').value) ? 90 : 80"></span>
+        <div fxFlex="20" fxLayout="row" [style.visibility]="(getConfiguration('sem').value) ? 'hidden' : 'visible'">
+          <label fxFlex="50" align="right">₹ {{summary().debit | number:'1.2-2'}}</label>
+          <label fxFlex="50" align="right">₹ {{summary().credit | number:'1.2-2'}}</label>
+        </div>
+        <label fxFlex="10" align="right" *ngIf="(getConfiguration('sem').value)">₹ {{summary().amount | number: '1.2-2'}}</label>
+      </div>
+    </div>
+  </div>
+  <div class="voucher-footer" fxLayout="row">
+    <div fxFlex="30">
+      <div fxLayout="column" *ngIf="getConfiguration('nar').value">
+        <label>Narration :</label>
+        <textarea [appSetFocus]="narrationFocusHandler" focusid="account-voucher-element" formControlName="narration" appNavigationInput (keydown.Enter)="submit()"></textarea>
+      </div>
+    </div>
+  </div>
+</form>

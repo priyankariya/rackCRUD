@@ -1,0 +1,29 @@
+@import "../../../styles/var";
+
+.layout-wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: antiquewhite;
+}
+
+.header-wrapper {
+  height: $header-height;
+  background-color: #075654;
+  color: azure;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 500;
+}
+
+.container-wrapper {
+  height: $container-height;
+}
+
+.footer-wrapper {
+  height: $footer-height;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 500;
+  background-color: #075654;
+  color: azure;
+}

@@ -1,0 +1,7 @@
+.tax-container-tittle {
+  color:  #7D6660;
+  margin-bottom: 5px;
+  & > label {
+    border-bottom: 1px solid gray;
+  }
+}

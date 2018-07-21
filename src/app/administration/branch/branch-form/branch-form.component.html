@@ -1,0 +1,119 @@
+<form fxLayout="row" [formGroup]="branchForm" fxFill>
+  <div fxFlex="40" class="br-1" fxLayout="column">
+      <input type="hidden" formControlName="id">
+      <div fxLayout="column" class="branch-general-info-container bd-1">
+        <div fxFlex="50" fxLayout="column" class="p-5">
+          <div class="branch-container-tittle">
+            <label>General Info</label>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <label fxFlex="30">Name</label>
+            <span fxFlex="3">:</span>
+            <input type="text" fxFlex="67" id="name" appNavigationInput appAutoFocus tabindex="1" formControlName="name"
+                   [appSetFocus]="nameFocusHandler" focusid="branch">
+          </div>
+          <div fxLayout="row" appInvalidMessage="name">
+            <div class="err-message" fxFlexOffset="33">
+              <span *appInvalidType="'required'">Branch Name is required.....!!</span>
+              <span *appInvalidType="'pattern'">Branch Name must be alphanumeric only.....!!</span>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <label fxFlex="30">Display Name</label>
+            <span fxFlex="3">:</span>
+            <input type="text" fxFlex="67" appNavigationInput tabindex="2" formControlName="displayName" focusid="branch">
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <label fxFlex="30">Branch type</label>
+            <span fxFlex="3">:</span>
+            <input type="text" fxFlex="67" appNavigationInput tabindex="3" formControlName="branchType" focusid="branch">
+          </div>
+          <div fxLayout="row" appInvalidMessage="branchType">
+           <div class="err-message" fxFlexOffset="33">
+             <span *appInvalidType="'required'">Branch Type is Required.....!!</span>
+             <span *appInvalidType="'pattern'">Branch type must be numeric only....!!</span>
+           </div>
+          </div>
+        </div>
+      </div>
+    <div class="bd-1 p-5" fxLayout="column">
+      <div class="branch-container-tittle">
+        <label>Contact Info</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">Address</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput tabindex="4" formControlName="address" focusid="branch">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">Mobile</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput tabindex="5" formControlName="mobile" focusid="branch">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">Phone</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput tabindex="6" formControlName="phone" focusid="branch">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">Email</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput tabindex="7" formControlName="email" focusid="branch">
+      </div>
+    </div>
+    <div fxLayout="column" class="p-5">
+      <div class="branch-container-tittle">
+        <label>Misc Info</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="30">DL No</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput tabindex="8" formControlName="dlNo" focusid="branch">
+      </div>
+    </div>
+  </div>
+  <div fxFlex="30" class="br-1">
+    <div class="p-5" fxLayout="column">
+      <div fxLayout="column" class="mb-5">
+        <div class="branch-container-tittle">
+          <label>User Assign</label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <input fxFlex="100" type="text" tabindex="9" (keydown)="userListOnKeyDown($event)" appNavigationInput focusid="branch">
+        </div>
+      </div>
+      <div fxLayout="column">
+        <div class="branch-user-assign-header">
+          <label>Users currently assigned</label>
+        </div>
+        <div class="branch-user-assign-content">
+          <div *ngFor="let user of assignedUsers">
+            <label>{{ user.username }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="30">
+    <div class="p-5" fxLayout="column">
+      <div fxLayout="column" class="mb-5">
+        <div class="branch-container-tittle">
+          <label>Client Assign</label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <input fxFlex="100" type="text" tabindex="10" appNavigationInput (keydown.Enter)="submit()" (keydown)="clientListOnKeyDown($event)" focusid="branch">
+        </div>
+      </div>
+      <div fxLayout="column">
+        <div class="branch-client-assign-header">
+          <label>Clients currently assigned</label>
+        </div>
+        <div class="branch-user-assign-content">
+          <div *ngFor="let client of assignedClients">
+            <label>{{ client.name }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

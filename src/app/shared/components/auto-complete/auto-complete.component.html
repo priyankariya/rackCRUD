@@ -1,0 +1,39 @@
+<div fxLayout="row" class="table-filter" fxLayoutAlign="start center" fxLayoutGap="10px">
+  <label>Search :</label>
+  <label style="color: darkred">{{ searchText }}</label>
+</div>
+<div fxLayout="column" class="table-head" fxLayoutAlign="center start" fxFlex fxShrink="0">
+  <div fxLayout="row">
+    <div *ngFor="let field of fields" fxFlex="{{ field.width }}" fxLayoutAlign="start center">
+      <label>{{ field.caption }}</label>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="!loading" class="table-body">
+  <div fxLayout="column" *ngIf="!empty">
+    <div fxLayout="column" *ngFor="let item of asyncData; let i = index" fxShrink="0">
+      <div fxLayout="row" [style.background-color]="item.startswith ? 'lightCyan' : 'initial'">
+        <mat-icon *ngIf="item['marked']">
+          check
+        </mat-icon>
+        <div *ngFor="let field of fields" fxFlex="{{ field.width }}">
+          <div fxLayoutAlign="start center">
+            <div *ngIf="field.dataField === searchField">
+              <button appNavigationButton focusid="auto-complete" [tabindex]="i + 1" #items (keydown.Space)="markElement(item)" (keydown.ArrowDown)="nextPage(i + 1)" (keydown.ArrowUp)="previousPage(i + 1)" (keydown.Enter)="selectItem(item)" (focus)="onFocusElement(item)">{{ item[field.dataField] }}</button>
+            </div>
+            <div *ngIf="field.dataField !== searchField">
+              <label>{{ item[field.dataField] }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="empty">
+    No records found...
+  </div>
+</div>
+<div *ngIf="loading" class="table-body" fxLayout="column" fxLayoutAlign="center center">
+  <app-spinner></app-spinner>
+</div>

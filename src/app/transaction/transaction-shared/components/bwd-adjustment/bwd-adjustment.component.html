@@ -1,0 +1,28 @@
+<div fxLayout="column" class="bwd-container" fxFill (keydown.Enter)="save()">
+  <div class="frame-header p-5" fxLayout="row" fxLayoutAlign="start center">
+    <label fxFlex="30">Bill-wise detail for</label>
+    <label fxFlex="65" class="bwd-name">{{ accountTransaction.ledger.name}}</label>
+    <label>{{ adjustment }}</label>
+    <label>{{ (adjustment > 0) ? 'Dr': 'Cr' }}</label>
+  </div>
+  <div class="frame-content" fxLayout="column" fxLayoutGap="5px">
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <label>New Ref</label>
+      <span fxFlex="3">:</span>
+      <input type="number" [(ngModel)]="newRef.amount" [ngModelOptions]="{standalone: true}" appNavigationInput focusid="bwd-adjustment" appAutoFocus tabindex="1">
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" class="input-fields-border">
+      <label fxFlex="25">Ref No</label>
+      <label fxFlex="25">Bill Amount</label>
+      <label fxFlex="25">Pending</label>
+      <label fxFlex="25">Amount</label>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" *ngFor="let item of pending; let i = index">
+      <label fxFlex="25">{{item.refNo}}</label>
+      <label fxFlex="25">{{item.billAmount}}</label>
+      <label fxFlex="25">{{item.pendingAmount}}</label>
+      <input type="number" fxFlex="25" [(ngModel)]="item.amount" [ngModelOptions]="{standalone: true}" appNavigationInput focusid="bwd-adjustment" [tabindex]="i+2">
+    </div>
+  </div>
+  <div class="frame-footer"></div>
+</div>

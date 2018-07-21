@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="therapy-update-container" fxLayout="column">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Therapy Edit</label>
+    </div>
+    <div class="frame-content">
+      <app-therapy-form #therapyForm [therapy]="therapy" (therapySubmit)="onSubmitTherapy($event)"></app-therapy-form>
+    </div>
+    <div class="frame-footer" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveTherapy()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

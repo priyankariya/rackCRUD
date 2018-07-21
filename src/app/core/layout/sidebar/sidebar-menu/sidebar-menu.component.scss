@@ -1,0 +1,11 @@
+.sidebar-menu-container {
+  width: 100%;
+  height: 30px;
+  color: antiquewhite;
+  border-bottom: 1px solid bisque;
+  font-family: Monaco, "Lucida Console", monospace;
+
+  & > .sidebar-menu-shortcut {
+    color: chartreuse;
+  }
+}

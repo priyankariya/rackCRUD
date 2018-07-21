@@ -1,0 +1,13 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="account-voucher-wrapper">
+  <div class="account-voucher-container" fxLayout="column">
+    <div class="account-voucher-header" fxLayout="row" fxLayoutAlign="center center">
+      <span>Account-Voucher</span>
+    </div>
+    <div class="account-voucher-content" fxLayout="column" fxLayoutAlign="center start">
+      <div fxLayoutAlign="center center" fxLayout="column" *ngFor="let voucherType of voucherTypes; let i = index">
+        <a><button #voucherTypeItems appNavigationButton focusid="voucher-type-list" [tabindex]="i + 1" (keydown.Enter)="voucherTypeListOnKeyDown(voucherType)">{{voucherType.name}}</button></a>
+      </div>
+      <span fxFlex></span>
+    </div>
+  </div>
+</div>

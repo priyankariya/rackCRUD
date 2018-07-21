@@ -1,0 +1,8 @@
+<div class="message-box-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3px">
+  <span style="color: darkred">{{ title }}</span>
+  <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center">
+    <button appNavigationDialogButton appAutoFocus tabindex="1" (click)="result.emit(true)" (keyup.Enter)="result.emit(true)"><b>Y</b></button>
+    <span>/</span>
+    <button appNavigationDialogButton tabindex="2" (click)="result.emit(false)" (keyup.Enter)="result.emit(false)"><b>N</b></button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="manufacturer-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Manufacturer</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-auto-complete #autoComplete [limitSize]="17" [reload]="reloadList" [fields]="autoCompleteFields" [searchField]="'name'" [dataStream]="manufacturerDataStreamCallback" (selectedItem)="onAutoCompleteSelect($event)"></app-auto-complete>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="addManufacturer()">
+        <label *ngIf="userPermissions([21])"><u>N</u>ew</label>
+      </div>
+      <div (click)="editManufacturer()">
+        <label *ngIf="userPermissions([23])"><u>E</u>dit</label>
+      </div>
+      <div (click)="deleteManufacturer()">
+        <label *ngIf="userPermissions([24])"><u>D</u>elete</label>
+      </div>
+    </div>
+  </div>
+</div>

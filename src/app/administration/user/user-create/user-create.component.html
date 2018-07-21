@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="user-create-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>New User</label>
+    </div>
+    <app-user-form #userForm (submitUser)="onSubmitUser($event)"></app-user-form>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center">
+      <div (click)="saveUser()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

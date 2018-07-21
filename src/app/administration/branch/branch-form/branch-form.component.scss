@@ -1,0 +1,32 @@
+.branch-general-info-container {
+  border-bottom: 1px solid black;
+}
+
+.branch-container-tittle {
+  color:  #7D6660;
+  margin-bottom: 10px;
+
+  & > label {
+    border-bottom: 1px solid gray;
+  }
+}
+
+.branch-user-assign-header {
+  border-bottom: 1px dotted gray
+}
+
+.branch-client-assign-header {
+  border-bottom: 1px dotted gray;
+}
+
+.branch-user-assign-content {
+  height: 100%;
+  margin-top: 10px;
+  overflow: auto
+}
+
+.branch-client-assign-content {
+  height: 100%;
+  margin-top: 10px;
+  overflow: auto
+}

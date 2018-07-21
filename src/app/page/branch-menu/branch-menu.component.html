@@ -1,0 +1,26 @@
+<div fxLayout="column" class="branch-menu-wrapper" fxLayoutAlign="center center">
+  <div class="branch-menu-container" fxLayout="column">
+    <div class="branch-menu-header" fxLayout="row" fxLayoutAlign="center center">
+      <span>Available Branch</span>
+    </div>
+    <div class="branch-menu-content" fxLayout="column">
+      <div fxLayout="column">
+        <a *ngFor="let branch of branches; let i = index">
+          <button #branchItems [tabindex]="i + 1" appNavigationButton focusid="branch-menu" (keyup.Enter)="setBranch(branch)">{{ branch.name }}</button>
+        </a>
+      </div>
+      <span fxFlex></span>
+      <div>
+        <a><button [appSetFocus]="multiBranchFocusHandler" appNavigationButton focusid="branch-menu" [tabindex]="branches.length + 1" (keyup.Enter)="setBranch(null)">Multi Branch</button></a>
+      </div>
+    </div>
+    <div class="branch-menu-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+      <div>
+        <label><u>L</u>ogout</label>
+      </div>
+    </div>
+  </div>
+</div>

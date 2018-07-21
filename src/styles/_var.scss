@@ -1,0 +1,3 @@
+$header-height: 40px;
+$footer-height: 30px;
+$container-height: calc(100% - #{$header-height + $footer-height});

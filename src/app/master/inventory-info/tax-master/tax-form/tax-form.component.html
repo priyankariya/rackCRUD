@@ -1,0 +1,91 @@
+<form fxLayout="row" fxFill [formGroup]="taxForm">
+  <div fxFlex="50" fxLayout="column" class="br-1">
+    <input type="hidden" formControlName="id">
+    <div class="bd-1">
+      <div class="tax-container-tittle">
+        <label>General Info</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label for="name" fxFlex="30">Name</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" id="name" formControlName="name" appAutoFocus appNavigationInput focusid="tax" tabindex="1" [appSetFocus]="taxFocusHandler">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label for="aliasName" fxFlex="30">Alias Name</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" id="aliasName" formControlName="aliasName" appNavigationInput focusid="tax" tabindex="2">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Tax Type</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" [value]="(selectedTaxType) ? selectedTaxType.name : null" (keydown)="taxTypeOnKeyDown($event)" appNavigationInput focusid="tax" tabindex="3">
+      </div>
+    </div>
+    <div class="mt-5">
+      <div class="tax-container-tittle" fxFlexAlign="center">
+        <label fxFlex align="center">Tax Allocation</label>
+      </div>
+      <div fxLayout="row" style="background-color: #cccccc" class="p-5">
+        <span fxFlex></span>
+        <label fxFlex="30" align="center">Ratio</label>
+        <label fxFlex="37" align="center">Ledger</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">CGST (Central Tax)</label>
+        <span fxFlex="3">:</span>
+        <input type="number" style="text-align: center"  fxFlex="30" appNavigationInput focusid="tax" tabindex="4" formControlName="cgstRatio">
+        <input fxFlex="37" style="text-align: center" appNavigationInput focusid="tax" tabindex="5" (keydown)="cgstLedgerListOnKeyDown($event)" [value]="(selectedCgstLedger) ? selectedCgstLedger.name : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">SGST (State Tax)</label>
+        <span fxFlex="3">:</span>
+        <input type="number" style="text-align: center"  fxFlex="30" appNavigationInput focusid="tax" tabindex="6" formControlName="sgstRatio">
+        <input fxFlex="37" style="text-align: center" appNavigationInput focusid="tax" tabindex="7" (keydown)="sgstLedgerListOnKeyDown($event)" [value]="(selectedSgstLedger) ? selectedSgstLedger.name : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">IGST (Integrated Tax)</label>
+        <span fxFlex="3">:</span>
+        <input type="number" style="text-align: center"  fxFlex="30" appNavigationInput focusid="tax" tabindex="8" formControlName="igstRatio">
+        <input fxFlex="37" style="text-align: center" appNavigationInput focusid="tax" tabindex="9" (keydown)="igstLedgerListOnKeyDown($event)" [value]="(selectedIgstLedger) ? selectedIgstLedger.name : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Cess</label>
+        <span fxFlex="3">:</span>
+        <input type="number" fxFlex="30" style="text-align: center"  appNavigationInput focusid="tax" tabindex="10" formControlName="cessRatio">
+        <input fxFlex="37" style="text-align: center" appNavigationInput focusid="tax" tabindex="11" (keydown)="cessLedgerListOnKeyDown($event)" [value]="(selectedCessLedger) ? selectedCessLedger.name : null">
+      </div>
+    </div>
+  </div>
+  <div fxFlex="50">
+    <div fxLayout="column" class="bd-1">
+      <div class="tax-container-tittle px-5">
+        <label>Purchase Allocation</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Nature Of Purchase</label>
+        <span fxFlex="3">:</span>
+        <input fxFlex="67" appNavigationInput focusid="tax" tabindex="12" (keydown)="natureOfPurchaseOnKeyDown($event)" [value]="(selectedNOP) ? selectedNOP.name : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Allocated Ledger</label>
+        <span fxFlex="3">:</span>
+        <input fxFlex="67" appNavigationInput focusid="tax" tabindex="13" (keydown)="purchaseLedgerListOnkeyDown($event)" [value]="(selectedPurchaseLedger) ? selectedPurchaseLedger.name : null">
+      </div>
+    </div>
+    <div class="mt-5">
+      <div class="tax-container-tittle px-5">
+        <label>Sale Allocation</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Nature Of Sale</label>
+        <span fxFlex="3">:</span>
+        <input fxFlex="67" appNavigationInput focusid="tax" tabindex="14" (keydown)="natureOfSaleOnKeyDown($event)" [value]="(selectedNOS) ? selectedNOS.name : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Allocated Ledger</label>
+        <span fxFlex="3">:</span>
+        <input fxFlex="67" appNavigationInput focusid="tax" tabindex="15" (keydown)="saleLedgerListOnKeyDown($event)" [value]="(selectedSaleLedger) ? selectedSaleLedger.name : null">
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,17 @@
+<div fxLayout="column" class="configuration-wrapper" fxLayoutAlign="center center">
+  <div class="configuration-container" fxLayout="column">
+    <div class="configuration-header" fxLayout="row" fxLayoutAlign="center center">
+      Configuration
+    </div>
+    <div class="configuration-content" fxLayout="column" fxLayoutAlign="center start">
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <a><button appNavigationButton tabindex="1" appAutoFocus [routerLink]="['network']">Network</button></a>
+      </div>
+      <span fxFlex></span>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <a><button appNavigationButton tabindex="2" (click)="goBack()">Go Back</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+

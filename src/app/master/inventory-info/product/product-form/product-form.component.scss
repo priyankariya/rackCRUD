@@ -1,0 +1,62 @@
+.product-container-sub-tittle {
+  color:  #7D6660;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  & > label {
+    border-bottom: 1px solid gray;
+  }
+}
+
+$therapy-header-height: 55px;
+.therapy-container {
+  height: 100%;
+  & > .therapy-header {
+    height: $therapy-header-height;
+    border-bottom: 1px dotted gray;
+  }
+  & > .therapy-content {
+    height: calc(100% - #{$therapy-header-height});
+    overflow: auto;
+  }
+}
+
+$salt-header-height: 55px;
+.salt-container {
+  height: 100%;
+  & > .salt-header {
+    height: $salt-header-height;
+    border-bottom: 1px dotted gray;
+  }
+  & > .salt-content {
+    height: calc(100% - #{$salt-header-height});
+    overflow: auto;
+  }
+}
+
+$bwd-form-header-height: 55px;
+.bwd-container {
+  height: 100%;
+
+  & > .bwd-form-header {
+    height: $bwd-form-header-height;
+    border-bottom: 1px dotted gray;
+  }
+
+  & > .bwd-form-content {
+    height: calc(100% - #{$bwd-form-header-height});
+    overflow: auto;
+  }
+}
+.bwd-form-input-field-heading {
+  border-top: 2px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.multi-select-header {
+  border-bottom: 1px dotted gray;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+}

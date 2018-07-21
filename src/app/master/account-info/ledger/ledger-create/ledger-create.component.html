@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="ledger-create-container" fxLayout="column">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>New Ledger</label>
+    </div>
+    <div class="frame-content">
+      <app-ledger-form #ledgerForm (submitLedger)="onSubmitLedger($event)"></app-ledger-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
+      <div (click)="saveLedger()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

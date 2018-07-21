@@ -1,0 +1,18 @@
+<div fxLayout="column" class="account-info-wrapper" fxLayoutAlign="center center">
+  <div class="account-info-container" fxLayout="column">
+    <div class="account-info-header" fxLayout="row" fxLayoutAlign="center center">
+      <span>Account Info</span>
+    </div>
+    <div class="account-info-content" fxLayout="column" fxLayoutAlign="center start">
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <a [routerLink]="['ledger']"><button appAutoFocus appNavigationButton focusid="account-info" tabindex="1" *ngIf="userPermissions([1, 2, 3, 4])">Ledger</button></a>
+        <a [routerLink]="['ledger-group']"><button appNavigationButton focusid="account-info" tabindex="2" *ngIf="userPermissions([5, 6, 7, 8])">Ledger Group</button></a>
+        <a [routerLink]="['voucher-model']"><button appNavigationButton focusid="account-info" tabindex="3">Voucher Model</button></a>
+      </div>
+      <span fxFlex></span>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <a><button appNavigationButton focusid="account-info" tabindex="4" (click)="goBack()">Go Back</button></a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<form [formGroup]="financialYearForm" fxLayout="row">
+  <input type="hidden" formControlName="id">
+  <div fxFlex="40">
+    <div class="fy-container-sub-tittle">
+      <label>General Info</label>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+      <label fxFlex="20">Name</label>
+      <span fxFlex="3">:</span>
+      <input type="text" fxFlex="77" appNavigationInput focusid="financial-year" tabindex="1" appAutoFocus formControlName="name">
+    </div>
+    <div class="fy-container-sub-tittle">
+      <label>Financial Year Info</label>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" class="p-5" fxLayoutGap="5px">
+      <div fxFlex="50" fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="40">Begin</label>
+        <span fxFlex="6">:</span>
+        <input type="text" fxFlex="54" appNavigationInput focusid="financial-year" tabindex="2" formControlName="fyBegin">
+      </div>
+      <div fxFlex="50" fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="40">End</label>
+        <span fxFlex="6">:</span>
+        <input type="text" fxFlex="54" appNavigationInput focusid="financial-year" tabindex="3" formControlName="fyEnd">
+      </div>
+    </div>
+    <div class="fy-container-sub-tittle">
+      <label>Book Info</label>
+    </div>
+    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center" class="p-5">
+      <div fxFlex="50" fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="40">Begin</label>
+        <span fxFlex="6">:</span>
+        <input type="text" fxFlex="54" appNavigationInput focusid="financial-year" tabindex="4" formControlName="bookBegin">
+      </div>
+      <div fxFlex="50" fxLayout="row" fxLayoutAlign="start center">
+        <label fxFlex="40">End</label>
+        <span fxFlex="6">:</span>
+        <input type="text" fxFlex="54" appNavigationInput focusid="financial-year" tabindex="5" formControlName="bookEnd" (keydown.Enter)="submit()">
+      </div>
+    </div>
+  </div>
+</form>

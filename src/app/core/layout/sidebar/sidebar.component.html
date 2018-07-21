@@ -1,0 +1,11 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+  <div fxLayout="column" class="sidebar-wrapper">
+    <div class="sidebar-title" fxLayoutAlign="center center">
+      <label>SHORTCUTS</label>
+    </div>
+    <app-sidebar-menu *ngFor="let menu of menus" [item]="menu.name" [shortcut]="menu.shortcut"></app-sidebar-menu>
+    <div fxFlex style="border-bottom: 1px solid bisque"></div>
+    <app-sidebar-menu [item]="'Features'" [shortcut]="'F11'" [link]="'features'" [keyCode]="122" [disabled]="disableFeatures"></app-sidebar-menu>
+    <app-sidebar-menu [item]="'Configure'" [shortcut]="'F12'" [link]="'configuration'" [keyCode]="123" [disabled]="disableConfiguration"></app-sidebar-menu>
+  </div>
+</div>

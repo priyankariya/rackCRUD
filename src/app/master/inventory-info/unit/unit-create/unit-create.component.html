@@ -1,0 +1,18 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div class="unit-create-container" fxLayout="column">
+    <div class="frame-header" fxLayoutAlign="start center">
+      <label>New Unit </label>
+    </div>
+    <div class="frame-content">
+      <app-unit-form #unitForm (unitSubmit)="onSubmitUnit($event)"></app-unit-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveUnit()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

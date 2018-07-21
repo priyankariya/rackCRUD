@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="salt-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Salt</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-auto-complete #autoComplete [limitSize]="17" [reload]="reloadList" [fields]="autoCompleteFields" [searchField]="'name'" [dataStream]="saltDataStreamCallback" (selectedItem)="onAutoCompleteSelect($event)"></app-auto-complete>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="addSalt()">
+        <label *ngIf="userPermissions([25])"><u>N</u>ew</label>
+      </div>
+      <div (click)="editSalt()">
+        <label *ngIf="userPermissions([27])"><u>E</u>dit</label>
+      </div>
+      <div (click)="deleteSalt()">
+        <label *ngIf="userPermissions([28])"><u>D</u>elete</label>
+      </div>
+    </div>
+  </div>
+</div>

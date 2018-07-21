@@ -1,0 +1,17 @@
+<div class="layout-wrapper" fxLayout="column">
+  <div class="header-wrapper">
+    <app-header></app-header>
+  </div>
+  <div class="container-wrapper" fxLayout="row">
+    <div fxFlex="88">
+      <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="12">
+      <app-sidebar></app-sidebar>
+    </div>
+
+  </div>
+  <div class="footer-wrapper">
+    <app-footer></app-footer>
+  </div>
+</div>

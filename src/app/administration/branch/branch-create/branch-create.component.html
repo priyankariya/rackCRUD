@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="branch-create-container" fxLayout="column">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>New Branch</label>
+    </div>
+    <div class="frame-content">
+      <app-branch-form #branchForm (submitBranch)="onSubmitBranch($event)"></app-branch-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="start center">
+      <div (click)="saveBranch()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

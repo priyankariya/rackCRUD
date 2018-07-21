@@ -1,0 +1,13 @@
+<form fxLayout="column" fxFill [formGroup]="unitForm">
+  <input type="hidden" formControlName="id">
+  <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+    <label for="name" fxFlex="30">Name</label>
+    <span fxFlex="3">:</span>
+    <input type="text" fxFlex="67" id="name" formControlName="name" appAutoFocus appNavigationInput focusid="unit" tabindex="1" [appSetFocus]="unitFocusHandler">
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+    <label for="aliasName" fxFlex="30">Alias Name</label>
+    <span fxFlex="3">:</span>
+    <input type="text" fxFlex="67" id="aliasName" formControlName="aliasName" (keydown.Enter)="submit()" appNavigationInput focusid="unit" tabindex="2">
+  </div>
+</form>

@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="section-update-container" fxLayout="column">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Section Edit</label>
+    </div>
+    <div class="frame-content">
+      <app-section-form #sectionForm [section]="section" (sectionSubmit)="onSubmitSection($event)"></app-section-form>
+    </div>
+    <div class="frame-footer" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveSection()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

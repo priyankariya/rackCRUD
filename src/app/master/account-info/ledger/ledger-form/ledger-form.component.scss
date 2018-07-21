@@ -1,0 +1,43 @@
+.ledger-container-tittle {
+  color:  #7D6660;
+  margin-bottom: 5px;
+  & > label {
+    border-bottom: 1px solid gray;
+  }
+}
+
+.ledger-general-Info-container {
+  padding: 5px;
+}
+
+
+.ledger-additional-Info-container {
+  padding: 5px;
+}
+
+
+.ledger-tax-Info-container {
+  padding: 5px;
+}
+
+
+.ledger-address-Info-container {
+  padding: 5px;
+}
+
+$bwd-form-header-height: 60px;
+$bwd-form-footer-height: 20px;
+.bwd-form-container {
+  height: 100%;
+  & > .bwd-form-header {
+    height: $bwd-form-header-height;
+    border-bottom: 1px dotted gray;
+    margin-bottom: 5px;
+  }
+ & > .bwd-form-content {
+   height: calc(100% - #{$bwd-form-header-height + $bwd-form-footer-height});
+ }
+  & > .bwd-form-footer{
+    height: $bwd-form-footer-height;
+  }
+}

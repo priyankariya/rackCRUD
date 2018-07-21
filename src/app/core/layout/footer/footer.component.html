@@ -1,0 +1,20 @@
+<div fxLayout="row" class="footer-container p-5" fxLayoutAlign="start center">
+  <div fxFlex="30">
+    <span class="status-message">{{message}}</span>
+  </div>
+  <div fxFlex="70" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+    <span fxFlex></span>
+
+    <span class="status-title" *ngIf="organization">
+      Organization : <span class="status-highlight">{{ organization.name }}<span *ngIf="branch"> - {{ branch.name }}</span></span>
+    </span>
+    <span class="status-title" *ngIf="organization">|</span>
+    <span class="status-title" *ngIf="loggedInUser">Logged in as : <span class="status-highlight">{{ loggedInUser.username }}</span></span>
+    <span class="status-title" *ngIf="loggedInUser">|</span>
+    <mat-icon  class="status-title">message</mat-icon>
+    <span class="status-title">|</span>
+    <mat-icon  class="status-title">local_printshop</mat-icon>
+    <span class="status-title">|</span>
+    <span class="status-title">{{ now | date: 'mediumTime' }}</span>
+  </div>
+</div>

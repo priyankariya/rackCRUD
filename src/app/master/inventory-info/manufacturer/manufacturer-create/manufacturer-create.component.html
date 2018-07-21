@@ -1,0 +1,18 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div class="manufacturer-create-container" fxLayout="column">
+    <div class="frame-header" fxLayoutAlign="start center">
+      <label>New Manufacturer </label>
+    </div>
+    <div class="frame-content">
+      <app-manufacturer-form #manufacturerForm (manufacturerSubmit)="onSubmitManufacturer($event)"></app-manufacturer-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveManufacturer()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

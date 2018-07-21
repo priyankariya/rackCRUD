@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="user-display-container">
+    <div class="frame-header" fxLayoutAlign="center center">
+      <label>Users</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-auto-complete #autoComplete [limitSize]="17" [fields]="autoCompleteFields" [searchField]="'username'" [dataStream]="userDataStreamCallback" (selectedItem)="onAutoCompleteSelect($event)"></app-auto-complete>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="addUser()">
+        <label><u>N</u>ew</label>
+      </div>
+      <div (click)="editUser()">
+        <label><u>E</u>dit</label>
+      </div>
+      <div (click)="deleteUser()">
+        <label><u>D</u>elete</label>
+      </div>
+    </div>
+  </div>
+</div>

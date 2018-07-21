@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill="">
+  <div class="user-update-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>User Edit</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-user-form #userForm [user]="user" (submitUser)="onSubmitUser($event)"></app-user-form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveUser()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

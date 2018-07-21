@@ -1,0 +1,24 @@
+<div fxLayout="column" class="inventory-info-wrapper" fxLayoutAlign="center center">
+  <div class="inventory-info-container" fxLayout="column">
+    <div class="inventory-info-header" fxLayout="row" fxLayoutAlign="center center">
+      Inventory-Info
+    </div>
+    <div class="inventory-info-content" fxLayout="column" fxLayoutAlign="center start">
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <a [routerLink]="['product']"><button appNavigationButton focusid="inventory-info" tabindex="1" appAutoFocus *ngIf="userPermissions([41,42,43,44])">Product</button></a>
+        <a [routerLink]="['manufacturer']"><button appNavigationButton focusid="inventory-info" tabindex="2" *ngIf="userPermissions([21,22,23,24])">Manufacturer</button></a>
+        <a [routerLink]="['salt']"><button appNavigationButton focusid="inventory-info" tabindex="3" *ngIf="userPermissions([25,26,27,28])">Salt</button></a>
+        <a [routerLink]="['section']"><button appNavigationButton focusid="inventory-info" tabindex="4" *ngIf="userPermissions([17,18,19,20])">Section</button></a>
+        <a [routerLink]="['therapy']"><button appNavigationButton focusid="inventory-info" tabindex="5" *ngIf="userPermissions([29,30,31,32])">Therapy</button></a>
+        <a [routerLink]="['unit']"><button appNavigationButton focusid="inventory-info" tabindex="6" *ngIf="userPermissions([9,10,11,12])">Unit</button></a>
+        <a [routerLink]="['rack']"><button appNavigationButton focusid="inventory-info" tabindex="7" *ngIf="userPermissions([13,14,15,16])">Rack</button></a>
+        <a [routerLink]="['tax']"><button appNavigationButton focusid="inventory-info" tabindex="8" *ngIf="userPermissions([33,34,35,36])">Tax</button></a>
+      </div>
+      <span fxFlex></span>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <a><button appNavigationButton focusid="inventory-info" tabindex="9" (click)="goBack()">Go Back</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,62 @@
+<form [formGroup]="voucherTypeForm" fxLayout="column" fxFill>
+  <div fxLayout="row" class="bd-1">
+    <div fxFlex="50">
+      <input type="hidden" formControlName="id">
+      <div class="voucher-model-subtitle">
+        <u>General Info</u>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Name</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput focusid="voucher-model" tabindex="1" formControlName="name" appAutoFocus [appSetFocus]="nameFocusHandler">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="30">Voucher Type</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" appNavigationInput focusid="voucher-model" [attr.tabindex]="(voucherModel) ? 'null' : '2'" [attr.disabled]="(voucherModel) ? true : null" [value]="(selectedVoucherModel) ? selectedVoucherModel.name : null" (keydown)="voucherTypeListOnKeyDown($event)">
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" *ngIf="configurations.length > 0">
+    <div fxFlex="50" fxLayout="column" class="br-1">
+      <div class="bd-1 py-5">
+        <div class="voucher-model-subtitle">
+          <label><u>Field Options</u></label>
+        </div>
+        <div *ngFor="let item of configurations " fxLayout="column">
+         <div fxLayout="row" fxLayoutAlign="start center"  class="p-5" *ngIf="item.method === 'field_options' && !item.disable">
+           <label fxFlex="70">{{item.particular}}</label>
+           <span fxFlex="3">:</span>
+           <input type="checkbox" appNavigationInput focusid="voucher-model" [tabindex]="item.tabIndex"  (ngModelChange)="disable(item, $event)" [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}">
+         </div>
+        </div>
+      </div>
+      <div class="bd-1 py-5">
+        <div class="voucher-model-subtitle">
+          <label><u>Fast Entry Options</u></label>
+        </div>
+        <div *ngFor="let item of configurations " fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start center"  class="p-5" *ngIf="item.method === 'fast_entry' && !item.disable">
+            <label fxFlex="70">{{item.particular}}</label>
+            <span fxFlex="3">:</span>
+            <input type="checkbox" appNavigationInput focusid="voucher-model" [tabindex]="item.tabIndex"  (ngModelChange)="disable(item,$event)" [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="50">
+      <div class="bd-1 py-5">
+        <div class="voucher-model-subtitle">
+          <label><u>Additional Options</u></label>
+        </div>
+        <div *ngFor="let item of configurations " fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="start center"  class="p-5" *ngIf="item.method === 'additional_options' && !item.disable">
+            <label fxFlex="70">{{item.particular}}</label>
+            <span fxFlex="3">:</span>
+            <input type="checkbox" appNavigationInput focusid="voucher-model" [tabindex]="item.tabIndex"  [(ngModel)]="item.value" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

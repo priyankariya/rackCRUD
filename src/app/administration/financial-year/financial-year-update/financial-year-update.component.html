@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="financial-year-update-container" fxLayout="column">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>FinancialYear Edit</label>
+    </div>
+    <div class="frame-content">
+      <app-financial-year-form #financialYearForm [financialYear]="financialYear" (saltSubmit)="onSubmitFinancialYear($event)"></app-financial-year-form>
+    </div>
+    <div class="frame-footer" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="saveFinancialYear()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>

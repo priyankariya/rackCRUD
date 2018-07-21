@@ -1,0 +1,228 @@
+<form fxLayout="column" fxFill [formGroup]="productForm">
+  <div fxLayout="row" class="bd-1" fxFlex="60" *ngIf="!loading" [ngClass]="{'disabled':  !productFormEnabled }">
+    <div class="br-1" fxFlex="35">
+      <div class="bd-1">
+        <div class="product-container-sub-tittle">
+          <label>General Info</label>
+        </div>
+        <input type="hidden" formControlName="id">
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label for="name" fxFlex="30">Name</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="67" id="name" formControlName="name" appAutoFocus appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled)  ?  '1' : null" [appSetFocus]="productFocusHandler">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label for="aliasName" fxFlex="30">Alias Name</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="67" id="aliasName" formControlName="aliasName" appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '2' : null">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label fxFlex="30">BWD</label>
+          <span fxFlex="3">:</span>
+          <input type="checkbox" formControlName="bwd" appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '3' : null">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label for="manufactureName" fxFlex="30">Manufacturer</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="67" id="manufactureName" (keydown)="manufacturerListOnKeyDown($event)" [value]="(selectedManufacturer) ? selectedManufacturer.name : null" appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '4' : null">
+        </div>
+        <div fxLayout="row">
+          <div fxFlex="60">
+            <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+              <label for="section" fxFlex="51">Section</label>
+              <span fxFlex="4">:</span>
+              <input type="text" fxFlex="46" id="section" (keydown)="sectionListOnKeyDown($event)" [value]="(selectedSection) ? selectedSection.name : null" appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '5' : null">
+            </div>
+          </div>
+          <div fxFlex="40">
+            <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+              <label for="rack" fxFlex="30">Rack</label>
+              <span fxFlex="4">:</span>
+              <input type="text" fxFlex="66" id="rack" (keydown)="rackListOnKeyDown($event)" [value]="(selectedRack) ? selectedRack.name : null" appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '6' : null">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-container-sub-tittle">
+        <label>Tax Info</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label for="taxType" fxFlex="30">Type of Tax</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" id="taxType" [value]="(selectedTaxType) ? selectedTaxType.name: null" appNavigationInput focusid="product" (keydown)="typeOfTaxListOnKeyDown($event)" [attr.tabindex]="(productFormEnabled) ? '7' : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label for="tax" fxFlex="30">Tax</label>
+        <span fxFlex="3">:</span>
+        <input type="text" fxFlex="67" id="tax" [value]="(selectedTax) ? selectedTax.name: null" (keydown)="taxListOnKeyDown($event)"  appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '8' : null">
+      </div>
+    </div>
+    <div class="br-1" fxFlex="20" fxLayout="column">
+      <div fxFlex="50" class="bd-1 therapy-container">
+        <div class="therapy-header">
+          <div class="product-container-sub-tittle">
+            <label>Therapy</label>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+            <input type="text" fxFlex="100" (keydown)="therapyListOnKeyDown($event)" appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '9' : null">
+          </div>
+        </div>
+        <div class="therapy-content">
+          <div *ngIf="selectedTherapy">
+            <div *ngFor="let item of selectedTherapy" fxLayout="row" fxLayoutAlign="start center" class="p-5">
+              <label>{{ item.name }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="50" class="salt-container">
+        <div class="salt-header">
+          <div class="product-container-sub-tittle">
+            <label>Salt</label>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+            <input type="text" fxFlex="100" (keydown)="saltListOnKeyDown($event)"  appNavigationInput focusid="product" [attr.tabindex]="(productFormEnabled) ? '10' : null">
+          </div>
+        </div>
+        <div class="salt-content">
+          <div *ngIf="selectedSalt">
+            <div *ngFor="let item of selectedSalt; let i = index" fxLayout="row" fxLayoutAlign="start center" class="p-5">
+              <label fxFlex="70">{{ item.name }}</label>
+              <input type="text" fxFlex="30" appNavigationInput focusid="product" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.strength" [attr.tabindex]="(selectedSalt && productFormEnabled) ? i+ 11 : null" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="25" class="br-1" fxLayout="column">
+      <div fxFlex="60" class="bd-1">
+        <div class="product-container-sub-tittle">
+          <label>Unit</label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label fxFlex="60">Primary</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="40" appNavigationInput focusid="product" [value]="(selectedPrimaryUnit) ? selectedPrimaryUnit.name : null"  (keydown)="primaryUnitListOnKeyDown($event)" [attr.tabindex]="(selectedSalt && productFormEnabled) ? selectedSalt.length + 12: null">
+        </div>
+        <div class="multi-select-header">
+          <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+            <label fxFlex="60">Secondary</label>
+            <span fxFlex="3">:</span>
+            <input type="text" fxFlex="40" appNavigationInput focusid="product" (keydown)="secondaryUnitListOnKeyDown($event)" [attr.tabindex]="(selectedSalt && productFormEnabled) ? selectedSalt.length + 13: null">
+          </div>
+        </div>
+        <div fxLayout="row" *ngFor="let item of selectedSecondaryUnit; let i = index" class="p-5" fxLayoutAlign="start center">
+          <label fxFlex="60">{{item.name}}</label>
+          <input type="text" style="text-align: right" fxFlex="40" appNavigationInput tabindex="" focusid="product" [attr.tabindex]="(productFormEnabled) ? i + 15 : null" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.conversion">
+        </div>
+      </div>
+      <div fxFlex="40">
+        <div class="product-container-sub-tittle">
+          <label>Drug Schedule</label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5 multi-select-header">
+          <input type="text" fxFlex="100" (keydown)="drugScheduleListOnKeyDown($event)" appNavigationInput focusid="product" [attr.tabindex]="(selectedSecondaryUnit && productFormEnabled) ? selectedSecondaryUnit.length + 16 : null">
+        </div>
+        <div *ngIf="selectedDrugSchedules">
+          <div *ngFor="let item of selectedDrugSchedules" fxLayout="row" class="p-5">
+            <label>{{ item.name }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="20" fxLayout="column">
+      <div class="product-container-sub-tittle">
+        <label>Additional Info</label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="50">For Order</label>
+        <span fxFlex="3">:</span>
+        <input type="checkbox" formControlName="forOrder" appNavigationInput focusid="product" [attr.tabindex]="(selectedSecondaryUnit && productFormEnabled) ? selectedSecondaryUnit.length + 17: null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="50">Hide</label>
+        <span fxFlex="3">:</span>
+        <input type="checkbox" appNavigationInput focusid="product" formControlName="hide" [attr.tabindex]="(selectedSecondaryUnit && productFormEnabled)? selectedSecondaryUnit.length + 18: null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="50">Prohibited</label>
+        <span fxFlex="3">:</span>
+        <input type="checkbox" formControlName="prohibited" appNavigationInput focusid="product" [attr.tabindex]="(selectedSecondaryUnit && productFormEnabled)? selectedSecondaryUnit.length + 19 : null">
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+        <label fxFlex="50">Sale Disc %</label>
+        <span fxFlex="3">:</span>
+        <input type="number" fxFlex="47" appNavigationInput focusid="product" formControlName="sDisc" [attr.tabindex]="(selectedSecondaryUnit && productFormEnabled)? selectedSecondaryUnit.length + 20: null" (keydown.Enter)="submitProduct()">
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxFlex="60" *ngIf="productFormEnabled && loading">
+    <app-spinner></app-spinner>
+  </div>
+  <div fxFlex="40" fxLayout="column" *ngIf="!bwdLoading && openingInventory">
+    <div fxLayout="column" [ngClass]="{'disabled':  productFormEnabled }">
+      <div class="product-container-sub-tittle mt-5">
+        <label>Opening</label>
+      </div>
+      <div [formGroup]="openingForm" fxLayout="row" *ngIf="!openingInventory.bwd" (keydown.Enter)="submitOpening()">
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label fxFlex="30">Unit</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="67" appNavigationInput focusid="qty" (keydown)="unitListOnKeyDown($event)" [value]="(selectedUnit) ? selectedUnit.name : null" tabindex="1" [appSetFocus]="unitFocusHandler">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label fxFlex="30">Qty</label>
+          <span fxFlex="3">:</span>
+          <input type="number" fxFlex="67" formControlName="qty" tabindex="2" appNavigationInput focusid="qty">
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label fxFlex="30">P.Cost</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="67" formControlName="pCost" focusid="qty" tabindex="3" appNavigationInput>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+          <label fxFlex="30">MRP</label>
+          <span fxFlex="3">:</span>
+          <input type="text" fxFlex="67" formControlName="mrp" focusid="qty" tabindex="4" appNavigationInput>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" [formGroup]="bwdForm" class="bwd-container" *ngIf="openingInventory.bwd">
+      <div class="bwd-form-header">
+        <div fxLayout="row" fxLayoutAlign="start center" class="bwd-form-input-field-heading">
+          <label fxFlex="15">Batch No</label>
+          <label align="center" fxFlex="15">Exp Month</label>
+          <label align="center" fxFlex="15">Exp Year</label>
+          <label align="center" fxFlex="15">Unit</label>
+          <label align="center" fxFlex="15">Qty</label>
+          <label align="right" fxFlex="15">P.cost</label>
+          <label align="right" fxFlex="10">MRP</label>
+        </div>
+        <div fxLayout="row" fxFlexAlign="start center" class="mt-5" (keydown.Enter)="submitOpening()">
+          <input type="hidden" formControlName="id">
+          <input type="text" fxFlex="15" appNavigationInput  formControlName="batchNo" focusid="opening" appAutoFocus [appSetFocus]="batchNoFocusHandler" tabindex="1" (keydown)="focusOnBwdDataList($event)">
+          <input style="text-align: center" type="number" fxFlex="15" appNavigationInput focusid="opening" formControlName="expMonth" tabindex="2">
+          <input style="text-align: center" type="number" fxFlex="15" appNavigationInput focusid="opening" formControlName="expYear" tabindex="3">
+          <input style="text-align: center"  type="text" fxFlex="15" appNavigationInput [value]="(selectedUnit) ? selectedUnit.name : null" focusid="opening" tabindex="4" (keydown)="unitListOnKeyDown($event)">
+          <input style="text-align: center"  type="number" fxFlex="15" appNavigationInput formControlName="qty" focusid="opening" tabindex="5">
+          <input style="text-align: right"  type="number" fxFlex="15" appNavigationInput formControlName="pCost" focusid="opening" tabindex="6">
+          <input style="text-align: right"  type="number" fxFlex="10" appNavigationInput formControlName="mrp" focusid="opening" tabindex="7">
+        </div>
+      </div>
+      <div class="bwd-form-content mt-5">
+        <div fxLayout="row" fxLayoutAlign="start center" align="center" *ngFor="let item of bwd; let i = index">
+          <button style="text-align: left" #bwdList focusid="bwdList" appNavigationButton [tabindex]="i + 1" fxFlex="15" (keydown)="editBwdList($event, item)">{{item.batchNo}}</button>
+          <label style="text-align: center" fxFlex="15">{{item.expMonth}}</label>
+          <label style="text-align: center" fxFlex="15">{{item.expYear}}</label>
+          <label fxFlex="15">{{item.unit.name}}</label>
+          <label fxFlex="15">{{item.qty}}</label>
+          <label align="right" fxFlex="15">{{item.pCost}}</label>
+          <label align="right" fxFlex="10">{{item.mrp}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxFlex="40" *ngIf="!productFormEnabled && bwdLoading">
+    <app-spinner></app-spinner>
+  </div>
+</form>

@@ -1,0 +1,22 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div class="network-configuration-container">
+    <div class="frame-header" fxLayoutAlign="center center">
+     <label>Network Configuration</label>
+    </div>
+    <form class="frame-content" fxLayout="column" [formGroup]="networkConfigurationForm">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <label for="api" fxFlex="40">API endpoint</label>
+        <label fxFlex="4">:</label>
+        <input fxFlex="56" type="text" id="api" appAutoFocus appNavigationInput tabindex="1" formControlName="api" (keydown.Enter)="submitNetworkConfigurationForm()">
+      </div>
+    </form>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div>
+        <label><u>A</u>ccept</label>
+      </div>
+      <div>
+        <label><u>C</u>ancel</label>
+      </div>
+    </div>
+  </div>
+</div>

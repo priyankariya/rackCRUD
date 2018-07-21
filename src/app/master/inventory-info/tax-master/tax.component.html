@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="tax-display-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Tax</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <app-auto-complete #autoComplete [limitSize]="17" [reload]="reloadList" [fields]="autoCompleteFields" [searchField]="'name'" [dataStream]="taxDataStreamCallback" (selectedItem)="onAutoCompleteSelect($event)"></app-auto-complete>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="addTax()">
+        <label *ngIf="userPermissions([33])"><u>N</u>ew</label>
+      </div>
+      <div (click)="editTax()">
+        <label *ngIf="userPermissions([35])"><u>E</u>dit</label>
+      </div>
+      <div (click)="deleteTax()">
+        <label *ngIf="userPermissions([36])"><u>D</u>elete</label>
+      </div>
+    </div>
+  </div>
+</div>

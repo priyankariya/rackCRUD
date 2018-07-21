@@ -1,0 +1,51 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <div class="voucher-numbering-container">
+    <div class="frame-header" fxLayout="row" fxLayoutAlign="center center">
+      <label>Voucher Numbering</label>
+    </div>
+    <div class="frame-content" fxLayout="column">
+      <form fxLayout="row" fxFill>
+        <div fxFlex="50" class="br-1">
+          <div fxLayout="column" class="voucher-numbering-header">
+            <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+              <label fxFlex="30">Financial Year</label>
+              <span fxFlex="3">:</span>
+              <input type="text" fxFlex="67" [value]="(selectedFinancialYear) ? selectedFinancialYear.name : null" appAutoFocus (keydown)="financialYearListOnKeyDown($event)"  appNavigationInput focusid="voucher-numbering" tabindex="1">
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="p-5">
+              <label fxFlex="30">Branch</label>
+              <span fxFlex="3">:</span>
+              <input type="text" fxFlex="67" [value]="(selectedBranch) ? selectedBranch.name : null" appNavigationInput focusid="voucher-numbering" tabindex="2" (keydown)="branchListOnKeyDown($event)" [appSetFocus]="voucherNumberingFocusHandler">
+            </div>
+          </div>
+          <div fxLayout="row" class="p-5 bd-1">
+            <label fxFlex="30">Voucher Type</label>
+            <div fxLayoutAlign="center center" fxLayout="row" fxFlex="20">
+              <label>Prefix</label>
+            </div>
+            <div fxLayoutAlign="center center" fxLayout="row" fxFlex="30">
+              <label>Serial</label>
+            </div>
+            <div fxLayoutAlign="center center" fxLayout="row" fxFlex="20">
+              <label>Suffix</label>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" *ngFor="let item of voucherNumbering; let i = index">
+            <label fxFlex="30">{{item.voucherType}}</label>
+            <input type="text" style="text-align: center" fxFlex="20" appNavigationInput focusid="voucher-numbering" [tabindex]="((i * 3) + 1) + 2" [value]="(item) ? item.prefix : null" [(ngModel)] = "item.prefix" [ngModelOptions]="{standalone: true}">
+            <input type="text" style="text-align: center" fxFlex="30" appNavigationInput focusid="voucher-numbering" [tabindex]="((i * 3) + 1) + 3" [value]="(item) ? item.serial : null" [(ngModel)] = "item.serial" [ngModelOptions]="{standalone: true}">
+            <input type="text" style="text-align: center" fxFlex="20" appNavigationInput focusid="voucher-numbering" [tabindex]="((i * 3) + 1) + 4" [value]="(item) ? item.suffix : null" [(ngModel)] = "item.suffix" [ngModelOptions]="{standalone: true}">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="frame-footer" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <div (click)="submit()">
+        <label><u>S</u>ave</label>
+      </div>
+      <div (click)="goBack()">
+        <label><u>Q</u>uit</label>
+      </div>
+    </div>
+  </div>
+</div>
